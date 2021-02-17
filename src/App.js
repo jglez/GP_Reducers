@@ -14,7 +14,7 @@ import TotalDisplay from './components/TotalDisplay';
 import CalcButton from './components/CalcButton';
 
 // Import our Action Creator Function
-import { applyNumber, changeOperation } from './actions/index'
+import { applyNumber, changeOperation, clearDisplay } from './actions/index'
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState)
@@ -26,7 +26,11 @@ function App() {
   }
 
   const handleChangeOperation = (operation) => {
-    return (dispatch(changeOperation(operation)))
+    return dispatch(changeOperation(operation))
+  }
+
+  const handleClear = () => {
+    return dispatch(clearDisplay())
   }
 
 
@@ -78,7 +82,7 @@ function App() {
             </div>
 
             <div className='row ce_button'>
-              <CalcButton value={'CE'} />
+              <CalcButton onClick={handleClear} value={'CE'} />
             </div>
 
           </form>

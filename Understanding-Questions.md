@@ -106,4 +106,34 @@ Depending on which operation was passed into `state.operation`, it will trigger 
 
 `calculateResult()` will then return the result of the operation into our reducer.
 
+3. **The user changes the arithmetic operation.**
+
+* When the user presses one of our `<CalcButton />` components, the `onClick()` gets triggered and executes `handleChangeOperation()` which then receives the operation as a string. We hardcoded this value according to which button represents which operation, such as addition, multiplication, or subtraction.
+```
+<CalcButton onClick={() => handleChangeOperation('+')} value={'+'} />
+<CalcButton onClick={() => handleChangeOperation('*')} value={'*'} />
+<CalcButton onClick={() => handleChangeOperation('-')} value={'-'} />
+```
+
+* Once inside of `handleChangeOperation()`, we pass in the operation that was selected into our `changeOperation` action creator function through arguments, and that returns an action object with type `CHANGE_OPERATION` which is a variable that references `'CHANGE_OPERATION'` as a string, and which operation was selected is also returned through the payload. It looks like this: 
+
+`{ type: CHANGE_OPERATION, payload: operation }` This is passed into **dispatch** and gets sent to the reducer.
+
+```
+const handleChangeOperation = (operation) => {
+  return (dispatch(changeOperation(operation)))
+}
+```
+
+* Once inside of the reducer, we trigger the `CHANGE_OPERATION` case and update our `state.operation` to what whichever operation was passed into the payload:
+
+```
+case (CHANGE_OPERATION):
+  return ({
+    ...state,
+    operation: action.payload
+  });
+```
+
+
 
