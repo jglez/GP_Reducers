@@ -9,25 +9,19 @@ export const initialState = {
 const calculateResult = (num1, num2, operation) => {
   switch (operation) {
 
-    case ("+"):
+    case ('+'):
       return num1 + num2;
 
-    case ("*"):
+    case ('*'):
       return num1 * num2;
 
-    case ("-"):
+    case ('-'):
       return num1 - num2;
   }
 }
 
 const reducer = (state, action) => {
   switch (action.type) {
-
-    case (ADD_ONE):
-      return ({
-        ...state,
-        total: state.total + 1
-      });
 
     case (APPLY_NUMBER):
       return ({
@@ -47,3 +41,8 @@ const reducer = (state, action) => {
 }
 
 export default reducer;
+      // case (ADD_ONE):
+      //   return ({
+      //     ...state,
+      //     total: state.total + 1
+      //   });

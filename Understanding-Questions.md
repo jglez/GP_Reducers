@@ -81,4 +81,29 @@ case (APPLY_NUMBER):
   });
 ```
 
-* This triggers the `APPLY_NUMBER` case which then 
+* This triggers the `APPLY_NUMBER` case which then creates a new object reference for our state sets our `total` state equal to the invocation of `calculateResult()` passing in three arguments:
+`calculateResult(state.total, action.payload, state.operation)`
+
+This function itself has a **switch** statement and three cases:
+
+```
+const calculateResult = (num1, num2, operation) => {
+  switch (operation) {
+
+    case ("+"):
+      return num1 + num2;
+
+    case ("*"):
+      return num1 * num2;
+
+    case ("-"):
+      return num1 - num2;
+  }
+}
+```
+
+Depending on which operation was passed into `state.operation`, it will trigger the difference switch cases for our `calculateResult()` function and pass in the two numbers to calculate.
+
+`calculateResult()` will then return the result of the operation into our reducer.
+
+
