@@ -135,5 +135,29 @@ case (CHANGE_OPERATION):
   });
 ```
 
+4. **The user presses CE, the clear entry button.**
 
+* When the user presses CE, the onClick gets triggered which fires our handleClear function.
+`<CalcButton onClick={handleClear} value={'CE'} />`.
+
+```
+const handleClear = () => {
+  return dispatch(clearDisplay())
+}
+```
+
+* This action does not need to return a payload to the reducer, so we don't receive any arguments. `handleClear` simply invokes `clearDisplay`, our action creator, which returns this simple action object: `{ type: CLEAR_DISPLAY }`
+
+
+* That action object is sent into dispatch which is sent to the reducer, which then triggers the `CLEAR_DISPLAY` case in the switch statement.
+
+```
+case (CLEAR_DISPLAY):
+  return ({
+    ...state,
+    total: 0
+  })
+```
+
+* Finally, we simply create a deep copy of state, and update `state.total` to 0, which updates our `<TotalDisplay value={state.total} />` component which renders our total.
 

@@ -14,7 +14,7 @@ import TotalDisplay from './components/TotalDisplay';
 import CalcButton from './components/CalcButton';
 
 // Import our Action Creator Function
-import { applyNumber, changeOperation, clearDisplay } from './actions/index'
+import { applyNumber, changeOperation, clearDisplay, addToMemory } from './actions/index'
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState)
@@ -31,6 +31,10 @@ function App() {
 
   const handleClear = () => {
     return dispatch(clearDisplay())
+  }
+
+  const handleAddToMemory = () => {
+    return dispatch(addToMemory())
   }
 
 
@@ -52,7 +56,7 @@ function App() {
             </div>
 
             <div className='row'>
-              <CalcButton value={'M+'} />
+              <CalcButton onClick={handleAddToMemory} value={'M+'} />
               <CalcButton value={'MR'} />
               <CalcButton value={'MC'} />
             </div>
