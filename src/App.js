@@ -19,8 +19,6 @@ import { applyNumber, changeOperation, clearDisplay, addToMemory, clearMemory, r
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  console.log(state)
-
   const handleClick = (num) => {
     return dispatch(applyNumber(num))
   }

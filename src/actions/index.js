@@ -31,9 +31,3 @@ export const clearMemory = () => {
 export const recallMemory = () => {
   return ({ type: RECALL_MEMORY })
 }
-
-// export const ADD_ONE = 'ADD_ONE';
-
-// export const addOne = () => {
-//   return ({ type: ADD_ONE });
-// }

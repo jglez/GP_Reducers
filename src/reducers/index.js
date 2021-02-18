@@ -65,8 +65,3 @@ const reducer = (state, action) => {
 }
 
 export default reducer;
-      // case (ADD_ONE):
-      //   return ({
-      //     ...state,
-      //     total: state.total + 1
-      //   });
